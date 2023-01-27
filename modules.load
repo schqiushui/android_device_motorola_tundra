@@ -105,5 +105,4 @@ mmi_sys_temp.ko
 aw37501.ko
 rbs_fod_mmi.ko
 mmi_annotate.ko
-tzlog_dump.ko
 watchdog_cpu_ctx.ko
