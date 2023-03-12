@@ -1,5 +1,3 @@
-import /vendor/etc/init/hw/init.vendor.st21nfc.rc
-
 on early-init && property:ro.bootmode=mot-factory
     insmod /vendor/lib/modules/moto_f_usbnet.ko
 
@@ -7,32 +5,39 @@ on early-init
    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/${ro.vendor.mot.gki.path} mmi_annotate mmi_info mmi_relay
 
 on early-init
+   insmod /vendor/lib/modules/msm_drm.ko
+   insmod /vendor/lib/modules/mmi_annotate.ko
+   insmod /vendor/lib/modules/mmi_info.ko
+   insmod /vendor/lib/modules/mmi_relay.ko
    insmod /vendor/lib/modules/bm_adsp_ulog.ko
    insmod /vendor/lib/modules/mmi_charger.ko
    insmod /vendor/lib/modules/qti_glink_charger.ko
    insmod /vendor/lib/modules/aw882xx_k504.ko
-   insmod /vendor/lib/modules/cirrus_wm_adsp.ko
-   insmod /vendor/lib/modules/cirrus_cs35l41.ko
-   insmod /vendor/lib/modules/cirrus_cs35l45.ko
    insmod /vendor/lib/modules/mmi_sys_temp.ko
    insmod /vendor/lib/modules/wl2864c.ko
+   insmod /vendor/lib/modules/leds_aw99703.ko
+   insmod /vendor/lib/modules/leds_lm3697.ko
    insmod /vendor/lib/modules/goodix_brl_mmi.ko
+   insmod /vendor/lib/modules/touchscreen_mmi.ko.ko
    insmod /vendor/lib/modules/camera.ko
-   insmod /vendor/lib/modules/aw862x.ko
+   insmod /vendor/lib/modules/aw37501.ko
+   insmod /vendor/lib/modules/wl2864c.ko
    insmod /vendor/lib/modules/cci_intf.ko
+   insmod /vendor/lib/modules/sx937x_sar.ko
+   insmod /vendor/lib/modules/sensors_class.ko
    insmod /vendor/lib/modules/qpnp_adaptive_charge.ko
    start vendor.mmi_modules
 
 on fs
-    # egis fod ko
-    insmod /vendor/lib/modules/rbs_fps_mmi.ko
+   # egis fod ko
+   insmod /vendor/lib/modules/rbs_fod_mmi.ko
 
 on post-fs
     # Sensors
-    chown system system /sys/devices/platform/soc/a94000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_enabled
-    chown system system /sys/devices/platform/soc/a94000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_pressed
-    chown system system /sys/devices/platform/soc/a94000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_enabled
-    chown system system /sys/devices/platform/soc/a94000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_pressed
+    chown system system /sys/devices/platform/soc/998000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_enabled
+    chown system system /sys/devices/platform/soc/998000.spi/spi_master/spi0/spi0.0/touchscreen/primary/double_tap_pressed
+    chown system system /sys/devices/platform/soc/998000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_enabled
+    chown system system /sys/devices/platform/soc/998000.spi/spi_master/spi0/spi0.0/touchscreen/primary/udfps_pressed
 
 on post-fs-data
     mkdir /mnt/vendor/persist/tof 0755 vendor_tcmd camera
@@ -54,6 +59,9 @@ on post-fs-data
     mkdir /data/vendor/tzstorage/egis 0770 system system
     mkdir /data/vendor/egis/cqa  0770 system system
 
+    # Add for 2nd gyro compatible
+    mkdir /mnt/vendor/persist/camera/gyro_compat 0770 vendor_tcmd camera
+
     # Add for fod fps calibration
     chown system system /sys/class/backlight/panel0-backlight/brightness
     chown system system /sys/class/drm/card0-DSI-1/panelName
@@ -63,6 +71,7 @@ on post-fs-data
     chmod 0666 /sys/class/backlight/panel0-backlight/brightness
     chmod 0666 /sys/class/drm/card0-DSI-1/panelName
     chmod 0666 /sys/class/drm/card0-DSI-1/panelId
+    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules wlan
 
 on early-boot
     # Add for egis fingerprint
@@ -74,13 +83,16 @@ on boot
     chmod 0660 /dev/cci_intf
     chown system camera /dev/cci_intf
 
+# Change force_charging_enable access mode and permission for tcmd
+    chmod 0664 /sys/class/power_supply/battery/device/force_charging_enable
+    chown vendor_tcmd system /sys/class/power_supply/battery/device/force_charging_enable
+
+    chmod 0664 /mnt/vendor/persist/factory/audio/aw_cali.bin
     #change adsp pmic test command file access permission
     chown vendor_tcmd system /sys/devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:mmi,qti-glink-charger/tcmd
     chown vendor_tcmd system /sys/devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:mmi,qti-glink-charger/force_pmic_icl
-    chown vendor_tcmd system /sys/devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/force_charging_enable
     chmod 0660 /sys/devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:mmi,qti-glink-charger/tcmd
     chmod 0660 /sys/devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:mmi,qti-glink-charger/force_pmic_icl
-    chmod 0660 /sys/devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/force_charging_enable
     # Touch game mode control
     chown system system /sys/class/touchscreen/primary/rotate
     chmod 0660 /sys/class/touchscreen/primary/rotate
@@ -90,7 +102,11 @@ on boot
     chmod 0660 /sys/class/touchscreen/primary/edge
     chown system system /sys/class/touchscreen/primary/first_filter
     chmod 0660 /sys/class/touchscreen/primary/first_filter
-   # Set adaptive charging perms for HAL
+    chown system system /sys/class/touchscreen/primary/gesture
+    chmod 0660 /sys/class/touchscreen/primary/gesture
+    chown system system /sys/class/touchscreen/primary/sample
+    chmod 0660 /sys/class/touchscreen/primary/sample
+    # Set adaptive charging perms for HAL
     chown system system /sys/module/qpnp_adaptive_charge/parameters/upper_limit
     chown system system /sys/module/qpnp_adaptive_charge/parameters/lower_limit
 

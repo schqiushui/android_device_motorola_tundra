@@ -1,0 +1,5 @@
+runtime_resource_overlay {
+    name: "SettingsProviderResTundra",
+    sdk_version: "current",
+    vendor: true
+}

@@ -22,7 +22,7 @@ fi
 
 set -e
 
-export DEVICE=dubai
+export DEVICE=tundra
 export DEVICE_COMMON=sm7325-common
 export VENDOR=motorola
 
