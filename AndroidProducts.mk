@@ -15,9 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_tundra.mk
+    $(LOCAL_DIR)/aosp_tundra.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_tundra-user \
-    lineage_tundra-userdebug \
-    lineage_tundra-eng
+    aosp_tundra-user \
+    aosp_tundra-userdebug \
+    aosp_tundra-eng
