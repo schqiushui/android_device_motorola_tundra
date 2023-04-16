@@ -9,7 +9,7 @@
 set -e
 
 export DEVICE=tundra
-export DEVICE_COMMON=sm7325-common
+export DEVICE_COMMON=sm8350-common
 export VENDOR=motorola
 
 "./../../${VENDOR}/${DEVICE_COMMON}/setup-makefiles.sh" "$@"
