@@ -30,6 +30,9 @@ SOONG_CONFIG_qtidisplay_udfps := true
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/device_framework_matrix_tundra.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_tundra.xml
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_tundra
+
 # Kernel
 TARGET_KERNEL_CONFIG += vendor/lineage_tundra.config
 
