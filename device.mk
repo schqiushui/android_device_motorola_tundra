@@ -36,6 +36,7 @@ $(call inherit-product, device/motorola/sm8350-common/common.mk)
 # Overlay
 PRODUCT_PACKAGES += \
     FrameworksResTundra \
+    NfcResTundra \
     SettingsResTundra \
     SettingsProviderResTundra \
     SystemUIResTundra \
