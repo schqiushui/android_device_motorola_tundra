@@ -34,6 +34,7 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_tundra.xml
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_tundra
 
 # Kernel
+BOARD_KERNEL_CMDLINE += androidboot.hab.product=tundra
 TARGET_KERNEL_CONFIG += vendor/lineage_tundra.config
 
 # Kernel Modules
