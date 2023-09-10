@@ -420,6 +420,9 @@
     <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
     <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
 
+    <!-- Preferred max refresh rate at AOD & Ambient Display, if supported by the display. -->
+    <integer name="config_aodMaxRefreshRate">60</integer>
+
     <!-- MMS user agent string -->
     <string name="config_mms_user_agent" translatable="false">motorolaedge30fusion</string>
     <!-- MMS user agent profile url -->
