@@ -417,6 +417,9 @@
          during initialization when the setting is still null. -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
 
+    <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
+    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
+
     <!-- MMS user agent string -->
     <string name="config_mms_user_agent" translatable="false">motorolaedge30fusion</string>
     <!-- MMS user agent profile url -->
