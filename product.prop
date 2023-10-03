@@ -1,3 +1,7 @@
 # Media
 media.stagefright.audio.deep=false
 media.stagefright.thumbnail.prefer_hw_codecs=false
+
+# Radio
+ro.telephony.default_network=27,27
+ril.subscription.types=RUIM
