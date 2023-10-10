@@ -277,6 +277,31 @@ vendor/lib64/camera/com.qti.tuned.mot_tundra_hi1336.bin
 vendor/lib64/camera/com.qti.tuned.mot_tundra_ov50a.bin
 vendor/lib64/camera/com.qti.tuned.mot_tundra_s5kgd2.bin
 
+# CVP firmware
+vendor/firmware/evass.b00
+vendor/firmware/evass-lt.b00
+vendor/firmware/evass-lt.b01
+vendor/firmware/evass-lt.b02
+vendor/firmware/evass-lt.b03
+vendor/firmware/evass-lt.b04
+vendor/firmware/evass-lt.b05
+vendor/firmware/evass-lt.b06
+vendor/firmware/evass-lt.b07
+vendor/firmware/evass-lt.b08
+vendor/firmware/evass-lt.b09
+vendor/firmware/evass-lt.b10
+vendor/firmware/evass-lt.b11
+vendor/firmware/evass-lt.b12
+vendor/firmware/evass-lt.b13
+vendor/firmware/evass-lt.b14
+vendor/firmware/evass-lt.b15
+vendor/firmware/evass-lt.b16
+vendor/firmware/evass-lt.b17
+vendor/firmware/evass-lt.b18
+vendor/firmware/evass-lt.b19
+vendor/firmware/evass-lt.mbn
+vendor/firmware/evass-lt.mdt
+
 # Display calibration data
 vendor/etc/qdcm_calib_data_mipi_mot_cmd_csot_c_1080p_dsc_655.xml
 vendor/etc/qdcm_calib_data_mipi_mot_cmd_tm_c_1080p_dsc_655.xml
