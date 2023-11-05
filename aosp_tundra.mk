@@ -14,6 +14,9 @@ $(call inherit-product, device/motorola/tundra/device.mk)
 # Inherit some common Pixel Experience stuff.
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
+# Quick Tap
+TARGET_SUPPORTS_QUICK_TAP := true
+
 PRODUCT_NAME := aosp_tundra
 PRODUCT_DEVICE := tundra
 PRODUCT_MANUFACTURER := motorola
