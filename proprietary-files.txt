@@ -1,5 +1,9 @@
 # All unpinned blobs below are extracted from tundra_g-user 13 T1SJS33.117-30-3-5 74fd3 release-keys.
 
+# AiService
+product/etc/permissions/com.motorola.aiservices.xml
+product/priv-app/AiServices/AiServices.apk;PRESIGNED
+
 # ACDB Data
 vendor/etc/acdbdata/nn_ns_models/fai__2.6.3_0.0__3.0.0_0.0__eai_1.10_enpu1.pmd
 vendor/etc/acdbdata/nn_ns_models/fai__2.7.2_0.0__3.0.0_0.0__eai_1.10.pmd
