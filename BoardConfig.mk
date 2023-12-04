@@ -54,5 +54,8 @@ TARGET_RECOVERY_UI_MARGIN_HEIGHT := 90
 # Security
 VENDOR_SECURITY_PATCH := 2023-11-01
 
+# Vibrator
+TARGET_QTI_VIBRATOR_USE_EFFECT_STREAM := true
+
 # inherit from the proprietary version
 include vendor/motorola/tundra/BoardConfigVendor.mk
