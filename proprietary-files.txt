@@ -272,6 +272,7 @@ system_ext/lib64/libcameraraw_jni.so
 system_ext/lib64/motorola.hardware.camera.desktop@1.0.so
 system_ext/lib64/motorola.hardware.camera.desktop@2.0.so
 system_ext/lib64/motorola.hardware.camera.imgtuner@2.0.so
+system_ext/lib64/vendor.qti.hardware.seccam@1.0.so
 vendor/bin/hw/motorola.hardware.camera.desktop@2.0-service
 vendor/bin/hw/motorola.hardware.camera.imgtuner@1.0-service
 vendor/etc/init/motorola.hardware.camera.desktop@2.0-service.rc
