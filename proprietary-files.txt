@@ -365,6 +365,10 @@ vendor/lib64/soundfx/libswgamedap.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0.so
 
+# Faceauth
+vendor/bin/hw/android.hardware.biometrics.face@1.0-service.faceauth
+vendor/etc/init/android.hardware.biometrics.face@1.0-service.faceauth.rc
+
 # Fingerprint
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-ets
 vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service-ets.rc
