@@ -32,9 +32,13 @@ void vendor_load_properties() {
     if (carrier == "retcn") {
                 PropertyOverride("ro.product.product.model", "XT2243-2");
                 PropertyOverride("ro.product.product.name", "tundra_cn");
+                PropertyOverride("ro.vendor.product.display", "moto S30 Pro");
+                PropertyOverride("ro.vendor.product.display.plain_text", "moto S30 Pro");
             } else {
                 PropertyOverride("ro.product.product.model", "motorola edge 30 fusion");
                 PropertyOverride("ro.product.product.name", "tundra_g");
+                PropertyOverride("ro.vendor.product.display", "motorola edge 30 fusion");
+                PropertyOverride("ro.vendor.product.display.plain_text", "motorola edge 30 fusion");
     }
 
 }
