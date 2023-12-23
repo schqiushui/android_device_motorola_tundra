@@ -12,6 +12,13 @@ prebuilt_etc {
     vendor: true,
 }
 
+prebuilt_etc {
+    name: "init.mmi.product.rc",
+    src: "etc/init.mmi.product.rc",
+    sub_dir: "init",
+    product_specific: true,
+}
+
 // fstab
 prebuilt_etc {
     name: "fstab.qcom.zramwb",

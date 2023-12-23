@@ -1,0 +1,87 @@
+# common initialization
+on post-fs
+    # LMK
+    setprop ro.lmk.kill_heaviest_task true
+    setprop ro.lmk.file_low_percentage 20
+    setprop ro.lmk.pgscan_limit 3000
+    setprop ro.lmk.swap_free_low_percentage 10
+    setprop ro.lmk.swap_util_max 90
+    setprop ro.lmk.thrashing_limit 50
+    setprop ro.lmk.thrashing_limit_decay 25
+    setprop ro.lmk.thrashing_limit_critical 30
+    setprop ro.lmk.threshold_decay 50
+    setprop ro.lmk.psi_complete_stall_ms 80
+    setprop ro.lmk.psi_partial_stall_ms 50
+    setprop ro.lmk.filecache_min_kb 300000
+    setprop ro.lmk.kill_timeout_ms 100
+    setprop persist.lmk.debug true
+    # Zram
+    setprop ro.vendor.zram.product_swapon true
+    setprop ro.zram.mark_idle_delay_mins 60
+    setprop ro.zram.first_wb_delay_mins 1440
+    setprop ro.zram.periodic_wb_delay_hours 24
+    write /sys/block/zram0/comp_algorithm lz4
+    write /proc/sys/vm/swappiness 100
+    setprop sys.sysctl.swappiness 100
+    # LowMemoryDetector of Framework
+    setprop ro.lowmemdetector.psi_low_stall_us 100000
+    setprop ro.lowmemdetector.psi_medium_stall_us 150000
+    setprop ro.lowmemdetector.psi_high_stall_us 200000
+
+on property:sys.boot_completed=1 && property:ro.vendor.zram.product_swapon=true
+    trigger sys-boot-completed-set
+
+on sys-boot-completed-set && property:persist.sys.zram_wb_enabled=false
+    swapon_all /vendor/etc/fstab.qcom
+on sys-boot-completed-set && property:persist.sys.zram_wb_enabled=true
+    swapon_all /vendor/etc/fstab.qcom.zramwb
+
+# Enable Zram writeback for 6~8G RAM
+on property:ro.vendor.hw.ram=6GB && property:persist.sys.zram_wb_enabled=""
+    setprop persist.sys.zram_wb_enabled true
+on property:ro.vendor.hw.ram=8GB && property:persist.sys.zram_wb_enabled=""
+    setprop persist.sys.zram_wb_enabled true
+on property:ro.vendor.hw.ram=12GB && property:persist.sys.zram_wb_enabled=""
+    setprop persist.sys.zram_wb_enabled true
+# Set Zram writeback size for 6~12G RAM
+on property:ro.vendor.hw.ram=6GB && property:persist.sys.zram_wb_size=""
+    setprop persist.sys.zram_wb_size 1536M
+on property:ro.vendor.hw.ram=8GB && property:persist.sys.zram_wb_size="" && property:ro.product.is_prc=""
+    setprop persist.sys.zram_wb_size 2048M
+on property:ro.vendor.hw.ram=12GB && property:persist.sys.zram_wb_size=""
+    setprop persist.sys.zram_wb_size 3072M
+
+# Tune Swap readahead on ufs 3.1
+# 0 when zram wb was disabled
+# 4 when zram wb was enabled, it should be fine tuned on each ufs/emmc.
+# Note: readahead will only be applied on writeback pages.
+on property:sys.boot_completed=1 && property:persist.sys.zram_wb_enabled=false
+    write /proc/sys/vm/page-cluster 0
+on property:sys.boot_completed=1 && property:persist.sys.zram_wb_enabled=true
+    write /proc/sys/vm/page-cluster 4
+
+# Tune dalvik configuration
+on property:ro.vendor.hw.ram=6GB
+    setprop dalvik.vm.dex2oat-threads 6
+    setprop dalvik.vm.heapstartsize 16m
+    setprop dalvik.vm.heapgrowthlimit 256m
+    setprop dalvik.vm.heapsize 512m
+    setprop dalvik.vm.heaptargetutilization 0.5
+    setprop dalvik.vm.heapminfree 8m
+    setprop dalvik.vm.heapmaxfree 32m
+on property:ro.vendor.hw.ram=8GB
+    setprop dalvik.vm.dex2oat-threads 6
+    setprop dalvik.vm.heapstartsize 16m
+    setprop dalvik.vm.heapgrowthlimit 256m
+    setprop dalvik.vm.heapsize 512m
+    setprop dalvik.vm.heaptargetutilization 0.5
+    setprop dalvik.vm.heapminfree 8m
+    setprop dalvik.vm.heapmaxfree 32m
+on property:ro.vendor.hw.ram=12GB
+    setprop dalvik.vm.dex2oat-threads 6
+    setprop dalvik.vm.heapstartsize 16m
+    setprop dalvik.vm.heapgrowthlimit 256m
+    setprop dalvik.vm.heapsize 512m
+    setprop dalvik.vm.heaptargetutilization 0.5
+    setprop dalvik.vm.heapminfree 8m
+    setprop dalvik.vm.heapmaxfree 32m

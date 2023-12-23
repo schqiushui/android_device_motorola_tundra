@@ -70,7 +70,8 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom.zramwb \
-    init.mmi.overlay.rc
+    init.mmi.overlay.rc \
+    init.mmi.product.rc
 
 # Keylayout
 PRODUCT_COPY_FILES += \
