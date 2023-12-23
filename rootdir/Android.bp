@@ -11,3 +11,10 @@ prebuilt_etc {
     sub_dir: "init/hw",
     vendor: true,
 }
+
+// fstab
+prebuilt_etc {
+    name: "fstab.qcom.zramwb",
+    src: "etc/fstab.qcom.zramwb",
+    vendor: true,
+}
