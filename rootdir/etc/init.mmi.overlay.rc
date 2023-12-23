@@ -10,7 +10,8 @@ on early-init
    insmod /vendor/lib/modules/qti_glink_charger.ko
    insmod /vendor/lib/modules/aw882xx_k504.ko
    insmod /vendor/lib/modules/mmi_sys_temp.ko
-   insmod /vendor/lib/modules/wl2864c.ko
+   insmod /vendor/lib/modules/leds_aw99703.ko
+   insmod /vendor/lib/modules/leds_lm3697.ko
    insmod /vendor/lib/modules/goodix_brl_mmi.ko
    insmod /vendor/lib/modules/camera.ko
    insmod /vendor/lib/modules/aw37501.ko
