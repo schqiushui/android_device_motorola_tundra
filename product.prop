@@ -1,3 +1,6 @@
+# Audio
+ro.audio.monitorWindowRotation=true
+
 # Media
 media.stagefright.audio.deep=false
 media.stagefright.thumbnail.prefer_hw_codecs=false
