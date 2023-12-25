@@ -36,7 +36,7 @@ on sys-boot-completed-set && property:persist.sys.zram_wb_enabled=false
 on sys-boot-completed-set && property:persist.sys.zram_wb_enabled=true
     swapon_all /vendor/etc/fstab.qcom.zramwb
 
-# Enable Zram writeback for 6~8G RAM
+# Enable Zram writeback for 6~12G RAM
 on property:ro.vendor.hw.ram=6GB && property:persist.sys.zram_wb_enabled=""
     setprop persist.sys.zram_wb_enabled true
 on property:ro.vendor.hw.ram=8GB && property:persist.sys.zram_wb_enabled=""
@@ -46,8 +46,10 @@ on property:ro.vendor.hw.ram=12GB && property:persist.sys.zram_wb_enabled=""
 # Set Zram writeback size for 6~12G RAM
 on property:ro.vendor.hw.ram=6GB && property:persist.sys.zram_wb_size=""
     setprop persist.sys.zram_wb_size 1536M
-on property:ro.vendor.hw.ram=8GB && property:persist.sys.zram_wb_size="" && property:ro.product.is_prc=""
+on property:ro.vendor.hw.ram=8GB && property:persist.sys.zram_wb_size=""
     setprop persist.sys.zram_wb_size 2048M
+on property:ro.vendor.hw.ram=8GB && property:persist.sys.zram_wb_size="" && property:ro.product.is_prc=""
+    setprop persist.sys.zram_wb_size 3072M
 on property:ro.vendor.hw.ram=12GB && property:persist.sys.zram_wb_size=""
     setprop persist.sys.zram_wb_size 3072M
 
@@ -59,6 +61,14 @@ on property:sys.boot_completed=1 && property:persist.sys.zram_wb_enabled=false
     write /proc/sys/vm/page-cluster 0
 on property:sys.boot_completed=1 && property:persist.sys.zram_wb_enabled=true
     write /proc/sys/vm/page-cluster 4
+
+# Tune bg_apps_limit configuration
+on property:ro.vendor.hw.ram=6GB
+    setprop ro.vendor.qti.sys.fw.bg_apps_limit 64
+on property:ro.vendor.hw.ram=8GB
+    setprop ro.vendor.qti.sys.fw.bg_apps_limit 96
+on property:ro.vendor.hw.ram=12GB
+    setprop ro.vendor.qti.sys.fw.bg_apps_limit 96
 
 # Tune dalvik configuration
 on property:ro.vendor.hw.ram=6GB
