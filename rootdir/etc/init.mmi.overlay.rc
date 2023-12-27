@@ -18,7 +18,6 @@ on early-init
    insmod /vendor/lib/modules/wl2864c.ko
    insmod /vendor/lib/modules/cci_intf.ko
    insmod /vendor/lib/modules/qpnp_adaptive_charge.ko
-   start vendor.mmi_modules
 
 on fs
    # egis fod ko

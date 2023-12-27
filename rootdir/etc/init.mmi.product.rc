@@ -2,7 +2,7 @@
 on post-fs
     # LMK
     setprop ro.lmk.kill_heaviest_task true
-    setprop ro.lmk.file_low_percentage 20
+    setprop ro.lmk.file_low_percentage 10
     setprop ro.lmk.pgscan_limit 3000
     setprop ro.lmk.swap_free_low_percentage 10
     setprop ro.lmk.swap_util_max 90
