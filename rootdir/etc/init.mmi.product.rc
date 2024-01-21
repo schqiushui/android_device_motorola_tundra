@@ -2,13 +2,13 @@
 on post-fs
     # LMK
     setprop ro.lmk.kill_heaviest_task true
-    setprop ro.lmk.file_low_percentage 10
+    setprop ro.lmk.file_low_percentage 20
     setprop ro.lmk.pgscan_limit 3000
     setprop ro.lmk.swap_free_low_percentage 10
     setprop ro.lmk.swap_util_max 90
-    setprop ro.lmk.thrashing_limit 50
-    setprop ro.lmk.thrashing_limit_decay 25
-    setprop ro.lmk.thrashing_limit_critical 30
+    setprop ro.lmk.thrashing_limit 80
+    setprop ro.lmk.thrashing_limit_decay 10
+    setprop ro.lmk.thrashing_limit_critical 500
     setprop ro.lmk.threshold_decay 50
     setprop ro.lmk.psi_complete_stall_ms 80
     setprop ro.lmk.psi_partial_stall_ms 50
