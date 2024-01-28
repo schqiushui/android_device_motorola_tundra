@@ -18,7 +18,6 @@ tea5767.ko
 tuner-simple.ko
 qt1010.ko
 mc44s803.ko
-qcom_edac.ko
 si2157.ko
 tuner-xc2028.ko
 tx_macro_dlkm.ko
