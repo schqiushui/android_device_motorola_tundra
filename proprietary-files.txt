@@ -33,8 +33,6 @@ vendor/lib/libacdbloader.so
 vendor/lib64/libacdbloader.so
 
 # Camera
-vendor/etc/pwr/PowerFeatureConfig.xml
-vendor/etc/pwr/VideoPowerOptFeature.xml
 vendor/lib/libcamxexternalformatutils.so
 vendor/lib64/camera/fdconfigpreview.bin
 vendor/lib64/camera/fdconfigpreviewlite.bin
