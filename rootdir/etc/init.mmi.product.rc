@@ -53,7 +53,7 @@ on property:ro.vendor.hw.ram=6GB
 on property:ro.vendor.hw.ram=8GB
     setprop ro.vendor.qti.sys.fw.bg_apps_limit 96
 on property:ro.vendor.hw.ram=12GB
-    setprop ro.vendor.qti.sys.fw.bg_apps_limit 96
+    setprop ro.vendor.qti.sys.fw.bg_apps_limit 128
 
 # Tune dalvik configuration
 on property:ro.vendor.hw.ram=6GB
@@ -66,17 +66,17 @@ on property:ro.vendor.hw.ram=6GB
     setprop dalvik.vm.heapmaxfree 32m
 on property:ro.vendor.hw.ram=8GB
     setprop dalvik.vm.dex2oat-threads 6
-    setprop dalvik.vm.heapstartsize 16m
+    setprop dalvik.vm.heapstartsize 24m
     setprop dalvik.vm.heapgrowthlimit 256m
     setprop dalvik.vm.heapsize 512m
-    setprop dalvik.vm.heaptargetutilization 0.5
+    setprop dalvik.vm.heaptargetutilization 0.46
     setprop dalvik.vm.heapminfree 8m
-    setprop dalvik.vm.heapmaxfree 32m
+    setprop dalvik.vm.heapmaxfree 48m
 on property:ro.vendor.hw.ram=12GB
     setprop dalvik.vm.dex2oat-threads 6
-    setprop dalvik.vm.heapstartsize 16m
-    setprop dalvik.vm.heapgrowthlimit 256m
+    setprop dalvik.vm.heapstartsize 24m
+    setprop dalvik.vm.heapgrowthlimit 384m
     setprop dalvik.vm.heapsize 512m
-    setprop dalvik.vm.heaptargetutilization 0.5
+    setprop dalvik.vm.heaptargetutilization 0.42
     setprop dalvik.vm.heapminfree 8m
-    setprop dalvik.vm.heapmaxfree 32m
+    setprop dalvik.vm.heapmaxfree 56m
