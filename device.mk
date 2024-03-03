@@ -105,10 +105,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     hardware/motorola/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
-# Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.motorola
-
 # Shipping API level
 BOARD_API_LEVEL := 31
 BOARD_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
