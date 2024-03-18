@@ -7,9 +7,6 @@ persist.vendor.camera.physical.num=4
 # Surfaceflinger
 ro.surface_flinger.enable_frame_rate_override=true
 
-# Motorola
-ro.mot.build.customerid=global
-
 # NFC
 ro.vendor.hw.nfc=st
 

@@ -5,6 +5,9 @@ ro.audio.monitorWindowRotation=true
 media.stagefright.audio.deep=false
 media.stagefright.thumbnail.prefer_hw_codecs=false
 
+# Motorola
+ro.mot.build.customerid=global
+
 # Radio
 ro.telephony.default_network=27,27
 ril.subscription.types=RUIM
