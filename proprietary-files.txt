@@ -17,8 +17,8 @@ vendor/etc/acdbdata/nn_ns_models/fai__2.7.8_0.0__3.0.0_0.0__eai_1.10.pmd
 vendor/etc/acdbdata/nn_vad_models/fai_3.0.0_0.0_eai_1.00.pmd
 
 # AiService
-product/etc/permissions/com.motorola.aiservices.xml
-product/priv-app/AiServices/AiServices.apk;PRESIGNED
+product/etc/permissions/com.motorola.aiservices.xml:system_ext/etc/permissions/com.motorola.aiservices.xml
+product/priv-app/AiServices/AiServices.apk:system_ext/priv-app/AiServices/AiServices.apk;PRESIGNED
 
 # Audio firmware
 vendor/firmware/aw882xx_afe_params.bin
